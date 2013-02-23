@@ -1,0 +1,110 @@
+
+@import compass/reset
+@import compass/utilities
+@import compass/css3
+@import compass/typography/vertical_rhythm
+@import compass/layout/sticky-footer
+@import recipes/shadow/drop/lifted-corners
+@import recipes/shape/polygon/triangle
+@import recipes/effect/ribbon
+@import recipes/ui/tooltip
+
+$base-font-size: 16px
+$base-line-height: 24px
+
++establish-baseline
+
+strong, b
+  :font-weight bold
+
+em, i
+  :font-style italic
+
+html
+  :background #d6d2ca url(../images/bedge_grunge.png)
+  :height 100%
+  :color #333
+
+a
+  :color darken(#007f12, 2%)
+  &:hover
+    :border-bottom-color transparent
+
+h1, h2
+  a
+    +text-shadow(0 1px 1px #fff)
+
+h1
+  +adjust-font-size-to(24px, 1)
+
+h1, h2
+  :font-family 'Open Sans Condensed'
+
+header > section, main > section, .player > section, .contact > section, footer, .introduction > section
+  :max-width 1120px
+  :min-width 600px
+  :margin 0 auto
+  :padding 0 3em
+
+header > section, .player > section, .contact > section, footer, .introduction > section, body.about main > section
+  :max-width 750px
+
+.introduction > section
+  +padding-leader
+
+  blockquote
+    :font-family Georgia
+    :font-style italic
+    :max-width 750px
+    :color #454545
+    +margin-trailer(0.5)
+    :position relative
+    :margin 0
+    :margin-right 230px
+
+    &:before
+      display: block
+      content: "\201C"
+      font-size: 80px
+      position: absolute
+      left: -0.57em
+      top: 0.223em
+      color: #7a7a7a
+    a
+      :line-height 0.85em
+      :color inherit
+      +transition(color 0.4s)
+    &:hover
+      a
+        :color darken(#007f12, 2%)
+
+@import buttons
+@import icons
+@import player
+@import header
+@import contact
+@import main
+@import grid
+@import footer
+
+
+body.about
+  .introduction
+    :display none
+
+
+@media (max-width: 700px)
+  menu .language.icon
+    :display none
+
+  header > section, main > section, .player > section, .contact > section, footer, .introduction > section
+    :padding-left 0.5em
+    :padding-right 0.5em
+    :min-width 304px
+
+  .introduction > section
+    blockquote
+      :margin-right 0
+      > p
+        +adjust-font-size-to(14px)
+    +padding-leader(0.75)
