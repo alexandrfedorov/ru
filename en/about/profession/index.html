@@ -9,7 +9,7 @@
       //<![CDATA[
         if (location.pathname.indexOf('output') > -1 || location.host == 'localhost' || location.port != 80) {
           var base = document.getElementsByTagName('base')[0];
-          var languages = /(en|ru|de)/;
+          var languages = /(?:\/|^)(en|ru|de)\//;
           var path = location.pathname;
           var language = (path.match(languages) || [null, null])[1];
           var root = language ? path.split(language)[0] : path.split('/output/')[0] + '/output/';
@@ -17,7 +17,7 @@
           document.onclick = function(e) {
             for (var el = e.target; el && el.nodeType != 9; el = el.parentNode) {
               var href = el.getAttribute('href');
-              if (href) {
+              if (href && el.host == location.host) {
                 // convert absolute path into relative path
                 if (href.charAt(0) == '/')
                   href = href.substring(1);
