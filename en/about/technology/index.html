@@ -7,7 +7,7 @@
     <base href='/' />
     <script type='text/javascript'>
       //<![CDATA[
-        if (location.pathname.indexOf('output') > -1 || location.host == 'localhost' || location.port != 80) {
+        if (location.pathname.indexOf('output') > -1 || location.host == 'localhost' || location.port != 80 || location.hist.indexOf('github') > -1) {
           var base = document.getElementsByTagName('base')[0];
           var languages = /(?:\/|^)(en|ru|de)\//;
           var path = location.pathname;
