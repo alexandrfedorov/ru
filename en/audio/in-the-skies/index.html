@@ -50,9 +50,9 @@
               if (location.host != el.host) continue;
               var zone = location.host.split('.').pop()
               if (zone == 'com' && href.substring(0, 4) == '/ru/')
-                href = '//' + location.hostname + href.substring(4);
+                href = '//' + location.hostname.replace(/\..*?$/, '.ru') + href.substring(3);
               else if (zone == 'ru' && href.substring(0, 4) == '/en/')
-                href = '//' + location.hostname + href.substring(3);
+                href = '//' + location.hostname.replace(/\..*?$/, '.com') + href.substring(3);
               if (href != el.getAttribute('href')) {
                 el.setAttribute('href', href);
                 e.preventDefault();
