@@ -43,6 +43,23 @@
               }
             }
           }
+        } else {
+          document.onclick = function(e) {
+            for (var el = e.target; el && el.nodeType != 9; el = el.parentNode) {
+              var href = el.getAttribute('href');
+              if (location.host != el.host) continue;
+              var zone = location.host.split('.').pop()
+              if (zone == 'com' && href.substring(0, 4) == '/ru/')
+                href = '//' + location.hostname + href.substring(4);
+              else if (zone == 'ru' && href.substring(0, 4) == '/en/')
+                href = '//' + location.hostname + href.substring(3);
+              if (href != el.getAttribute('href')) {
+                el.setAttribute('href', href);
+                e.preventDefault();
+                el.click();
+              }
+            }
+          }
         }
       //]]>
     </script>
